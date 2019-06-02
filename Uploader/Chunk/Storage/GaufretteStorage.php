@@ -165,7 +165,11 @@ class GaufretteStorage extends StreamManager implements ChunkStorageInterface
 
     public function cleanup($path)
     {
-        $this->filesystem->delete($path);
+        try {
+            $this->filesystem->delete($path);
+        } catch (Gaufrette\Exception\FileNotFound $e) {
+            /* Not found, this is fine */   
+        }
     }
 
     public function getChunks($uuid)
