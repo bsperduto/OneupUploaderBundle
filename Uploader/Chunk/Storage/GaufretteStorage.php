@@ -167,7 +167,7 @@ class GaufretteStorage extends StreamManager implements ChunkStorageInterface
     {
         try {
             $this->filesystem->delete($path);
-        } catch (Gaufrette\Exception\FileNotFound $e) {
+        } catch (\Gaufrette\Exception\FileNotFound $e) {
             /* Not found, this is fine */   
         }
     }
